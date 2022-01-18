@@ -1,45 +1,60 @@
 #!/bin/bash
 
 set -e
-
-echo "${INPUT_LANG,,}"
-
 shopt -s nocasematch
-if [[ $INPUT_LANG =~ "^go(lang)?$" ]]
+
+
+# If no directory provided the entire project should be scanned recursively
+if [[ $INPUT_DIR == "" ]]
+then
+    $INPUT_DIR = "./..."
+fi
+
+# Check which language is to be scanned (go|js|ts|py|java|kotlin|swift)
+if [[ $INPUT_LANG =~ ^go(lang)?$ ]]
 then
 
     echo "Choosen language is golang"
+    echo $INPUT_DIR
 
-elif [[ $INPUT_LANG =~ "^(js|javascript)$" ]]
+    #Install gosec
+    curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s v2.9.5
+
+    #Run gosec
+    /bin/gosec version
+
+elif [[ $INPUT_LANG =~ ^(js|javascript)$ ]]
 then
 
     echo "Choosen language is javascript"
 
-elif [[ $INPUT_LANG =~ "^(ts|typescript)$" ]]
+elif [[ $INPUT_LANG =~ ^(ts|typescript)$ ]]
 then
 
     echo "Choosen language is typescript"
 
-elif [[ $INPUT_LANG =~ "^(py|python)$" ]]
+elif [[ $INPUT_LANG =~ ^(py|python)$ ]]
 then
 
     echo "Choosen language is python"
 
-elif [[ $INPUT_LANG =~ "^java$" ]]
+elif [[ $INPUT_LANG =~ ^java$ ]]
 then
 
     echo "Choosen language is java"
 
-elif [[ $INPUT_LANG =~ "^kotlin$" ]]
+elif [[ $INPUT_LANG =~ ^kotlin$ ]]
 then
 
     echo "Choosen language is kotlin"
 
-elif [[ $INPUT_LANG =~ "^swift$" ]]
+elif [[ $INPUT_LANG =~ ^swift$ ]]
 then
 
     echo "Choosen language is swift"
 
 else
+    
+    echo "$INPUT_LANG is not supported"
     exit 1;
 fi
