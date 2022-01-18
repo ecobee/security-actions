@@ -7,7 +7,7 @@ shopt -s nocasematch
 # If no directory provided the entire project should be scanned recursively
 if [[ $INPUT_DIR == "" ]]
 then
-    $INPUT_DIR = "./..."
+    INPUT_DIR="./..."
 fi
 
 # Check which language is to be scanned (go|js|ts|py|java|kotlin|swift)
