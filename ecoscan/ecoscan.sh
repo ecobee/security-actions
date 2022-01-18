@@ -15,7 +15,7 @@ then
 
     echo "Choosen language is javascript"
 
-elif [[ $INPUT_LANG =~ "^(ts|typescript)$"]]
+elif [[ $INPUT_LANG =~ "^(ts|typescript)$" ]]
 then
 
     echo "Choosen language is typescript"
