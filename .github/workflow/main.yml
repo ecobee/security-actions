@@ -1,0 +1,30 @@
+on: [push]
+
+jobs:
+  test_ecoscan_golang:
+    runs-on: ubuntu-latest
+    name: Testing Ecoscan with golang
+    steps:
+      - uses: actions/ecoscan@v0.1
+        with:
+          language: 'go'
+      - uses: actions/ecoscan@v0.1
+        with:
+          language: 'golang'
+      - uses: actions/ecoscan@v0.1
+        with:
+          language: 'g'
+  test_ecoscan_javascript:
+    runs-on: ubuntu-latest
+    name: Testing Ecoscan with javascript
+    steps:
+      - uses: actions/ecoscan@v0.1
+        with:
+          language: 'js'
+      - uses: actions/ecoscan@v0.1
+        with:
+          language: 'javascript'
+      - uses: actions/ecoscan@v0.1
+        with:
+          language: 'j'
+          
