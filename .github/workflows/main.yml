@@ -7,25 +7,25 @@ jobs:
     runs-on: ubuntu-latest
     name: Testing Ecoscan with golang
     steps:
-      - uses: ecobee/actions-sandbox/ecoscan@v0.1
+      - uses: ecobee/actions-sandbox/ecoscan@v0.2
         with:
           language: 'Go'
-      - uses: ecobee/actions-sandbox/ecoscan@v0.1
+      - uses: ecobee/actions-sandbox/ecoscan@v0.2
         with:
           language: 'gOLAng'
-      - uses: ecobee/actions-sandbox/ecoscan@v0.1
+      - uses: ecobee/actions-sandbox/ecoscan@v0.2
         with:
           language: 'g'
   test_ecoscan_javascript:
     runs-on: ubuntu-latest
     name: Testing Ecoscan with javascript
     steps:
-      - uses: ecobee/actions-sandbox/ecoscan@v0.1
+      - uses: ecobee/actions-sandbox/ecoscan@v0.2
         with:
           language: 'js'
-      - uses: ecobee/actions-sandbox/ecoscan@v0.1
+      - uses: ecobee/actions-sandbox/ecoscan@v0.2
         with:
           language: 'javascript'
-      - uses: ecobee/actions-sandbox/ecoscan@v0.1
+      - uses: ecobee/actions-sandbox/ecoscan@v0.2
         with:
           language: 'j'
