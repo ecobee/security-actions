@@ -9,10 +9,10 @@ jobs:
     steps:
       - uses: ecobee/actions-sandbox/ecoscan@v0.1
         with:
-          language: 'go'
+          language: 'Go'
       - uses: ecobee/actions-sandbox/ecoscan@v0.1
         with:
-          language: 'golang'
+          language: 'gOLAng'
       - uses: ecobee/actions-sandbox/ecoscan@v0.1
         with:
           language: 'g'
