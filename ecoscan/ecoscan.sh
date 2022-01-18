@@ -1,9 +1,10 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 set -e
 
 echo "${INPUT_LANG,,}"
 
+shopt -s nocasematch
 if [[ $INPUT_LANG =~ "^go(lang)?$" ]]
 then
 
