@@ -1,6 +1,8 @@
 name: Ecoscan Testing          
           
-on: [push]
+on: 
+  push:
+    branches: [main]
 
 jobs:
   test_ecoscan_golang:
