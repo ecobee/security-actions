@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 shopt -s nocasematch
 if [[ $INPUT_LANG =~ "^go(lang)?$" ]]
@@ -36,4 +36,6 @@ then
 
     echo "Choosen language is swift"
 
+else
+    exit 1;
 fi

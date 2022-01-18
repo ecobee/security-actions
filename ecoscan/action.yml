@@ -2,9 +2,12 @@ name: 'ecoscan SAST'
 description: 'Static Code Analysis for ecobee Repositories'
 inputs:
   language:
-    description: 'Language to Scan'
+    description: 'Language to scan'
     required: true
     default: 'go'
+  directory:
+    description: 'Directory to scan (defaults to all directories recursively)'
+    required: false
 runs:
   using: "composite"
   steps:
@@ -14,3 +17,4 @@ runs:
       shell: bash
       env:
         INPUT_LANG: ${{ inputs.language }}
+        INPUT_DIR:  ${{ inputs.directory }}
