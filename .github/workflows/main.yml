@@ -1,5 +1,3 @@
-# This is a basic workflow to help you get started with Actions
-
 name: Ecoscan Testing          
           
 on: [push]
@@ -9,25 +7,25 @@ jobs:
     runs-on: ubuntu-latest
     name: Testing Ecoscan with golang
     steps:
-      - uses: actions/ecoscan@v0.1
+      - uses: actions-sandbox/ecoscan@v0.1
         with:
           language: 'go'
-      - uses: actions/ecoscan@v0.1
+      - uses: actions-sandbox/ecoscan@v0.1
         with:
           language: 'golang'
-      - uses: actions/ecoscan@v0.1
+      - uses: actions-sandbox/ecoscan@v0.1
         with:
           language: 'g'
   test_ecoscan_javascript:
     runs-on: ubuntu-latest
     name: Testing Ecoscan with javascript
     steps:
-      - uses: actions/ecoscan@v0.1
+      - uses: actions-sandbox/ecoscan@v0.1
         with:
           language: 'js'
-      - uses: actions/ecoscan@v0.1
+      - uses: actions-sandbox/ecoscan@v0.1
         with:
           language: 'javascript'
-      - uses: actions/ecoscan@v0.1
+      - uses: actions-sandbox/ecoscan@v0.1
         with:
           language: 'j'
