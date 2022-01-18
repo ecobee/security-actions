@@ -13,9 +13,7 @@ jobs:
       - uses: ecobee/actions-sandbox/ecoscan@v0.1
         with:
           language: 'gOLAng'
-      - uses: ecobee/actions-sandbox/ecoscan@v0.1
-        with:
-          language: 'g'
+          directory: testing/
   test_ecoscan_javascript:
     runs-on: ubuntu-latest
     name: Testing Ecoscan with javascript
@@ -26,6 +24,3 @@ jobs:
       - uses: ecobee/actions-sandbox/ecoscan@v0.1
         with:
           language: 'javascript'
-      - uses: ecobee/actions-sandbox/ecoscan@v0.1
-        with:
-          language: 'j'
