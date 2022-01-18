@@ -1,0 +1,16 @@
+name: 'ecoscan SAST'
+description: 'Static Code Analysis for ecobee Repositories'
+inputs:
+  language:
+    description: 'Language to Scan'
+    required: true
+    default: 'go'
+runs:
+  using: "composite"
+  steps:
+    - run: echo "Running ecoscan Static Code Analysis for ${{inputs.language }}..."
+      shell: bash
+    - run: ${{ github.action_path }}/ecoscan.sh
+      shell: bash
+      env:
+        INPUT_LANG: ${{ inputs.language }}
