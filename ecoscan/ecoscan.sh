@@ -10,6 +10,13 @@ then
     INPUT_DIR="./..."
 fi
 
+# If no GITHUB_WORKSPACE env var (checkout not performed), exit because no access to repo
+if [[ $GITHUB_WORKSPACE == "" ]]
+then
+    echo "Make sure prior to using Ecoscan action you check out the repo using actions/checkout@v2"
+    exit 1
+fi
+
 # Check which language is to be scanned (go|js|ts|py|java|kotlin|swift)
 if [[ $INPUT_LANG =~ ^go(lang)?$ ]]
 then
