@@ -1,2 +1,1 @@
-# actions-sandbox
-Security Team Actions Testing Ground
+# security-actions

@@ -1,30 +1,30 @@
-name: Ecoscan Testing          
+# name: Ecoscan Testing          
           
-on: 
-  push:
-    branches: [main]
+# on: 
+#   push:
+#     branches: [main]
 
-jobs:
-  test_ecoscan_golang:
-    runs-on: ubuntu-latest
-    name: Testing Ecoscan with golang
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Ecoscan 
-        uses: ecobee/actions-sandbox/ecoscan@v0.1
-        with:
-          language: 'Go'
-      - uses: ecobee/actions-sandbox/ecoscan@v0.1
-        with:
-          language: 'gOLAng'
-  test_ecoscan_javascript:
-    runs-on: ubuntu-latest
-    name: Testing Ecoscan with javascript
-    steps:
-      - uses: ecobee/actions-sandbox/ecoscan@v0.1
-        with:
-          language: 'js'
-      - uses: ecobee/actions-sandbox/ecoscan@v0.1
-        with:
-          language: 'javascript'
+# jobs:
+#   test_ecoscan_golang:
+#     runs-on: ubuntu-latest
+#     name: Testing Ecoscan with golang
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+#       - name: Ecoscan 
+#         uses: ecobee/actions-sandbox/ecoscan@v0.1
+#         with:
+#           language: 'Go'
+#       - uses: ecobee/actions-sandbox/ecoscan@v0.1
+#         with:
+#           language: 'gOLAng'
+#   test_ecoscan_javascript:
+#     runs-on: ubuntu-latest
+#     name: Testing Ecoscan with javascript
+#     steps:
+#       - uses: ecobee/actions-sandbox/ecoscan@v0.1
+#         with:
+#           language: 'js'
+#       - uses: ecobee/actions-sandbox/ecoscan@v0.1
+#         with:
+#           language: 'javascript'

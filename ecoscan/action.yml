@@ -13,7 +13,7 @@ runs:
   steps:
     - run: echo "Running ecoscan Static Code Analysis for ${{inputs.language }}..."
       shell: bash
-    - run: ${{ github.action_path }}/ecoscan.sh
+    - run: ../lib/ecoscan.sh
       shell: bash
       env:
         INPUT_LANG: ${{ inputs.language }}
