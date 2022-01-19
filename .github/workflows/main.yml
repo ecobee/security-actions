@@ -9,13 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     name: Testing Ecoscan with golang
     steps:
-      - uses: ecobee/actions-sandbox/ecoscan@v0.1
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Ecoscan 
+        uses: ecobee/actions-sandbox/ecoscan@v0.1
         with:
           language: 'Go'
       - uses: ecobee/actions-sandbox/ecoscan@v0.1
         with:
           language: 'gOLAng'
-          directory: testing/
   test_ecoscan_javascript:
     runs-on: ubuntu-latest
     name: Testing Ecoscan with javascript
