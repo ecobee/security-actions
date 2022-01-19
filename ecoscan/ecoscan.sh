@@ -11,6 +11,8 @@ then
 fi
 
 # If no GITHUB_WORKSPACE env var (checkout not performed), exit because no access to repo
+#   GITHUB_WORKSPACE is created during workflow by actions/checkout and points to the 
+#   repository where the actions are running
 if [[ $GITHUB_WORKSPACE == "" ]]
 then
     echo "Make sure prior to using Ecoscan action you check out the repo using actions/checkout@v2"
@@ -23,10 +25,6 @@ then
 
     echo "Choosen language is golang"
     echo $INPUT_DIR
-
-    echo $(ls -lah)
-    echo $(env)
-    echo $(printenv)
 
     #Install gosec
     curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s v2.9.5
