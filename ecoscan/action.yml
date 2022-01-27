@@ -13,6 +13,10 @@ runs:
   steps:
     - run: echo "Running ecoscan Static Code Analysis for ${{inputs.language }}..."
       shell: bash
+    - run: pwd
+      shell: bash
+    - run: ls -lah
+      shell: bash
     - run: ../lib/ecoscan.sh
       shell: bash
       env:
