@@ -17,7 +17,7 @@ if [[ $INPUT_DIR == "" ]]
 then
     INPUT_DIR="./..."
 else
-    INPUT_DIR=$GITHUB_WORKSPACE + "/" + $INPUT_DIR
+    INPUT_DIR="${GITHUB_WORKSPACE}/${INPUT_DIR}"
 fi
 
 
