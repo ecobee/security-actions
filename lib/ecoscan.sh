@@ -70,3 +70,6 @@ else
     echo "$INPUT_LANG is not supported"
     exit 1;
 fi
+
+
+# Upload scan results to PR
