@@ -8,3 +8,8 @@ This repository is meant be a collection of GitHub Actions to be used for Static
 ## ecoScan
 
 
+
+## ecoGATE
+<sup>ecobee GitHub Actions Token Exchange</sup>
+
+
