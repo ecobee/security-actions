@@ -29,11 +29,14 @@ then
     echo "Choosen language is golang"
     echo "Choosen directory is: $INPUT_DIR"
 
+    echo "go version"
+    go version
+
     #Install gosec
     curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s v2.9.5
 
     #Run gosec
-    echo "::set-output name=ecoscan_result::$(bin/gosec -fmt=text $INPUT_DIR 2>&1)"
+    _result=$(bin/gosec -fmt=text $INPUT_DIR)
 
 elif [[ $INPUT_LANG =~ ^(js|javascript)$ ]]
 then
@@ -72,7 +75,9 @@ else
 fi
 
 
-# Output scan results
-#echo "echoing result"
-#echo $_result
-#echo "::set-output name=ecoscan_result::$_result"
+# Output scan results, output only allows single line, replace with hex equivalent
+# for carriage return, newline, and %
+_result="${_result//'%'/'%25'}"
+_result="${_result//$'\n'/'%0A'}"
+_result="${_result//$'\r'/'%0D'}"
+echo "::set-output name=ecoscan_result::$_result"
