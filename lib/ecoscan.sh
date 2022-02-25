@@ -32,7 +32,7 @@ then
     curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s v2.9.5
 
     #Run gosec || true to ignore exit code from gosec (it will fail if any issues are found)
-    ECOSCAN_RESULT=$(bin/gosec -out=result.txt $INPUT_DIR || true)
+    ECOSCAN_RESULT=$(bin/gosec -fmt=text $INPUT_DIR)
 
 elif [[ $INPUT_LANG =~ ^(js|javascript)$ ]]
 then
