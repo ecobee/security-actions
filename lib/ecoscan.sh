@@ -32,7 +32,6 @@ then
 
     #Run gosec || true to ignore exit code from gosec (it will fail if any issues are found)
     bin/gosec -out=result.txt $INPUT_DIR
-    cat result.txt
 
 elif [[ $INPUT_LANG =~ ^(js|javascript)$ ]]
 then
@@ -72,4 +71,5 @@ fi
 
 
 # Output scan results
+cat result.txt
 echo "::set-output name=ecoscan_result::$(cat result.txt)"
