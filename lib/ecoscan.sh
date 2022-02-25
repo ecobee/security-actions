@@ -20,6 +20,8 @@ else
 fi
 
 
+_result=''
+
 # Check which language is to be scanned (go|js|ts|py|java|kotlin|swift)
 if [[ $INPUT_LANG =~ ^go(lang)?$ ]]
 then
@@ -30,8 +32,8 @@ then
     #Install gosec
     curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s v2.9.5
 
-    #Run gosec || true to ignore exit code from gosec (it will fail if any issues are found)
-    bin/gosec -out=result.txt $INPUT_DIR
+    #Run gosec
+    _result=$(bin/gosec -fmt=text $INPUT_DIR)
 
 elif [[ $INPUT_LANG =~ ^(js|javascript)$ ]]
 then
@@ -71,8 +73,6 @@ fi
 
 
 # Output scan results
-echo "catting result"
-cat result.txt
 echo "echoing result"
-echo result.txt
-echo "::set-output name=ecoscan_result::$(cat result.txt)"
+echo $_result
+echo "::set-output name=ecoscan_result::$_result"
