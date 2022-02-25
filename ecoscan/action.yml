@@ -8,12 +8,17 @@ inputs:
   directory:
     description: 'Directory to scan (defaults to all directories recursively)'
     required: false
+outputs:
+  result:
+    description: "The result of running ecoScan"
+    value: ${{ steps.sast.outputs.ecoscan_result }}
 runs:
   using: "composite"
   steps:
     - run: echo "Running ecoscan Static Code Analysis for ${{inputs.language }}..."
       shell: bash
-    - run: ${{ github.action_path }}/../lib/ecoscan.sh
+    - id: sast
+      run: ${{ github.action_path }}/../lib/ecoscan.sh
       shell: bash
       env:
         INPUT_LANG: ${{ inputs.language }}

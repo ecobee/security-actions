@@ -32,7 +32,7 @@ then
     curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s v2.9.5
 
     #Run gosec
-    bin/gosec $INPUT_DIR
+    ECOSCAN_RESULT=bin/gosec -fmt=txt $INPUT_DIR
 
 elif [[ $INPUT_LANG =~ ^(js|javascript)$ ]]
 then
@@ -71,4 +71,5 @@ else
 fi
 
 
-# Upload scan results to PR
+# Output scan results
+echo "::set-output name=ecoscan_result::$(ECOSCAN_RESULT)"
