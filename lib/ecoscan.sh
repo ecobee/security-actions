@@ -33,6 +33,7 @@ then
 
     #Run gosec || true to ignore exit code from gosec (it will fail if any issues are found)
     ECOSCAN_RESULT=$(bin/gosec -fmt=text $INPUT_DIR)
+    echo $ECOSCAN_RESULT
 
 elif [[ $INPUT_LANG =~ ^(js|javascript)$ ]]
 then
