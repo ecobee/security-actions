@@ -72,4 +72,4 @@ fi
 
 
 # Output scan results
-echo "::set-output name=ecoscan_result::$(ECOSCAN_RESULT)"
+echo "::set-output name=ecoscan_result::$ECOSCAN_RESULT"
