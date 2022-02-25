@@ -26,7 +26,7 @@ if [[ $INPUT_LANG =~ ^go(lang)?$ ]]
 then
 
     echo "Choosen language is golang"
-    echo $INPUT_DIR
+    echo "Choosen directory is: $INPUT_DIR"
 
     #Install gosec
     curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s v2.9.5
