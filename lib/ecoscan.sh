@@ -29,9 +29,6 @@ then
     echo "Choosen language is golang"
     echo "Choosen directory is: $INPUT_DIR"
 
-    echo "go version"
-    go version
-
     #Install gosec
     curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s v2.9.5
 
@@ -80,4 +77,5 @@ fi
 _result="${_result//'%'/'%25'}"
 _result="${_result//$'\n'/'%0A'}"
 _result="${_result//$'\r'/'%0D'}"
+echo $_result
 echo "::set-output name=ecoscan_result::$_result"
