@@ -71,5 +71,8 @@ fi
 
 
 # Output scan results
+echo "catting result"
 cat result.txt
+echo "echoing result"
+echo result.txt
 echo "::set-output name=ecoscan_result::$(cat result.txt)"
