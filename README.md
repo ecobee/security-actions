@@ -19,6 +19,7 @@ jobs:
  ecoScan:
     name: Scan Source Code for Security Vulnerabilities and Coding Errors
     runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -32,11 +33,11 @@ jobs:
 
       - name: Add ecoscan result as a Pull Request Comment
         uses: marocchino/sticky-pull-request-comment@v2
-        if: steps.ecoscan.outputs.result != '' && github.event_name == 'pull_request'
+        if: steps.ecoscan.outputs.result != ''
         with:
           recreate: true
           message: |
-            ecoscan has reviewed your code:
+            ecoScan has reviewed your code:
             ```
             ${{ steps.ecoscan.outputs.result }}
             ```

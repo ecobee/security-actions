@@ -11,14 +11,6 @@ then
     exit 1
 fi
 
-# If no directory provided the entire project should be scanned recursively
-if [[ $INPUT_DIR == "" ]]
-then
-    INPUT_DIR="./..."
-else
-    INPUT_DIR="${GITHUB_WORKSPACE}/${INPUT_DIR}"
-fi
-
 
 _result=''
 
@@ -26,16 +18,24 @@ _result=''
 if [[ $INPUT_LANG =~ ^go(lang)?$ ]]
 then
 
+    # If no directory provided the entire project should be scanned recursively
+    if [[ $INPUT_DIR == "" ]]
+    then
+        INPUT_DIR="./..."
+    else
+        INPUT_DIR="${GITHUB_WORKSPACE}/${INPUT_DIR}"
+    fi
+
     echo "Choosen language is golang"
     echo "Choosen directory is: $INPUT_DIR"
 
-    #Install gosec
+    # Install gosec
     curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s v2.9.5
 
-    #Run gosec
+    # Run gosec
     _result=$(bin/gosec -fmt=text $INPUT_DIR)
     
-    # No results if no 
+    # If exit code success, no issues found 
     if [ $? -eq 0 ]; then 
         _result='No Issues Found!'
     fi
@@ -43,8 +43,29 @@ then
 elif [[ $INPUT_LANG =~ ^(js|javascript)$ ]]
 then
 
-    _result="Javascript code scanning has not yet been implemented in ecoScan, please wait for it in future releases"
+    # If no directory provided the entire project should be scanned recursively
+    if [[ $INPUT_DIR == "" ]]
+    then
+        INPUT_DIR="./"
+    else
+        INPUT_DIR="${GITHUB_WORKSPACE}/${INPUT_DIR}"
+    fi
+
+    echo "Choosen language is golang"
+    echo "Choosen directory is: $INPUT_DIR"
+
+    # Install njsscan
+    pip install njsscan
+
+    # Run njsscan
+    njsscan --exit-warning -o results.txt $INPUT_DIR)
     
+    # If exit code success, no issues found, else store results of scan in variable _result
+    if [ $? -eq 0 ]; then 
+        _result='No Issues Found!'
+    else 
+        _result=$(cat results.txt)
+    fi
 
 elif [[ $INPUT_LANG =~ ^(ts|typescript)$ ]]
 then
