@@ -58,7 +58,7 @@ then
     pip install njsscan
 
     # Run njsscan
-    njsscan --exit-warning -o results.txt $INPUT_DIR)
+    njsscan --exit-warning -o results.txt $INPUT_DIR
     
     # If exit code success, no issues found, else store results of scan in variable _result
     if [ $? -eq 0 ]; then 
