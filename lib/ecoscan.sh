@@ -35,6 +35,7 @@ then
 
     #Run gosec
     _result=$(bin/gosec -no-fail -fmt=sarif -out=results.sarif -stdout -verbose=text $INPUT_DIR)
+    _sarif=$(base64 results.sarif)
 
 elif [[ $INPUT_LANG =~ ^(js|javascript)$ ]]
 then
@@ -78,6 +79,9 @@ fi
 _result="${_result//'%'/'%25'}"
 _result="${_result//$'\n'/'%0A'}"
 _result="${_result//$'\r'/'%0D'}"
-echo $(base64 results.sarif)
+_sarif="${_sarif//'%'/'%25'}"
+_sarif="${_sarif//$'\n'/'%0A'}"
+_sarif="${_sarif//$'\r'/'%0D'}"
+echo $_sarif
 echo "::set-output name=ecoscan_result::$_result"
-echo "::set-output name=ecoscan_sarif_b64::$(base64 results.sarif)"
+echo "::set-output name=ecoscan_sarif_b64::$_sarif"
