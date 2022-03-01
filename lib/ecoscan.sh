@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -e
 shopt -s nocasematch
 
 # If no GITHUB_WORKSPACE env var (checkout not performed), exit because no access to repo
@@ -34,38 +33,43 @@ then
     curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s v2.9.5
 
     #Run gosec
-    _result=$(bin/gosec -no-fail -fmt=sarif -out=results.sarif -stdout -verbose=text $INPUT_DIR)
-    _sarif=$(base64 results.sarif)
+    _result=$(bin/gosec -fmt=text $INPUT_DIR)
+    
+    # No results if no 
+    if [ $? -eq 0 ]; then 
+        _result='No Issues Found!'
+    fi
 
 elif [[ $INPUT_LANG =~ ^(js|javascript)$ ]]
 then
 
-    echo "Choosen language is javascript"
+    _result="Javascript code scanning has not yet been implemented in ecoScan, please wait for it in future releases"
+    
 
 elif [[ $INPUT_LANG =~ ^(ts|typescript)$ ]]
 then
 
-    echo "Choosen language is typescript"
+    _result="Typescript code scanning has not yet been implemented in ecoScan, please wait for it in future releases"
 
 elif [[ $INPUT_LANG =~ ^(py|python)$ ]]
 then
 
-    echo "Choosen language is python"
+    _result="Python code scanning has not yet been implemented in ecoScan, please wait for it in future releases"
 
 elif [[ $INPUT_LANG =~ ^java$ ]]
 then
 
-    echo "Choosen language is java"
+    _result="Java code scanning has not yet been implemented in ecoScan, please wait for it in future releases"
 
 elif [[ $INPUT_LANG =~ ^kotlin$ ]]
 then
 
-    echo "Choosen language is kotlin"
+    _result="Kotlin code scanning has not yet been implemented in ecoScan, please wait for it in future releases"
 
 elif [[ $INPUT_LANG =~ ^swift$ ]]
 then
 
-    echo "Choosen language is swift"
+    _result="Swift code scanning has not yet been implemented in ecoScan, please wait for it in future releases"
 
 else
     
@@ -79,9 +83,4 @@ fi
 _result="${_result//'%'/'%25'}"
 _result="${_result//$'\n'/'%0A'}"
 _result="${_result//$'\r'/'%0D'}"
-_sarif="${_sarif//'%'/'%25'}"
-_sarif="${_sarif//$'\n'/'%0A'}"
-_sarif="${_sarif//$'\r'/'%0D'}"
-echo $_sarif
 echo "::set-output name=ecoscan_result::$_result"
-echo "::set-output name=ecoscan_sarif_b64::$_sarif"

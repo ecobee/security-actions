@@ -12,9 +12,6 @@ outputs:
   result:
     description: "The result of running ecoScan"
     value: ${{ steps.sast.outputs.ecoscan_result }}
-  sarif_b64_output:
-    description: "The sarif output of the scan results in base64 format"
-    value: ${{ steps.sast.outputs.ecoscan_sarif_b64 }}
 runs:
   using: "composite"
   steps:
