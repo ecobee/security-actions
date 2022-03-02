@@ -8,7 +8,7 @@ This repository is a collection of GitHub Actions to be used for Static Code Ana
 ## ecoScan
 This GitHub action provides the tools necessary to scan their codebase for static code vulnerabilities and weaknesses as part of a GitHub Actions workflow during a pull request prior to committing their codebase. 
 
-This action works with the `golang, javascript, typescript, python, java, kotlin, and swift` languages. If this tool does not support a language you'd like to use, please reach out to the security team directly and we can work on extending this application further.
+This action works with the `Golang, Javascript, Typescript, Python 3, Java, Kotlin, and Swift` languages. If this tool does not support a language you'd like to use, please reach out to the security team directly and we can work on extending this application further.
 
 To use this tooling, the following needs to be added to the GitHub Actions workflow configuration:
 
@@ -55,7 +55,7 @@ Let's jump into each step to explain what is happening.
 
 |Name|I/O|Required?|Description| Value(s) |
 |:---|:---|:---|:---|:---|
-| language | Input | Required | Language to scan against. | - `golang (go)` <br> - `javascript (js)` <br> - `typescript (ts)` <br> - `python (py)` <br> - `java` <br> - `kotlin` <br> - `swift` |
+| language | Input | Required | Language to scan against. | - `golang (go)` <br> - `javascript (js)` <br> - `typescript (ts)` <br> - `python3 (py3)` <br> - `java` <br> - `kotlin` <br> - `swift` |
 | directory | Input | Optional | Directory to scan from the root of the project <br>(defaults to all directories recursively) | Any directory path from the root of the project. <br> If not provided, defaults to the root directory. |
 | result | Output | N/A | The output result of running ecoScan in the form of a string | N/A |
 

@@ -36,7 +36,7 @@ then
     _result=$(bin/gosec -fmt=text $INPUT_DIR)
     
     # If exit code success, no issues found 
-    if [ $? -eq 0 ]; then 
+    if [ $? -eq 0 ]; then
         _result='No Issues Found!'
     fi
 
@@ -59,11 +59,11 @@ then
 
     # Run njsscan
     njsscan --exit-warning -o results.txt $INPUT_DIR
-    
+
     # If exit code success, no issues found, else store results of scan in variable _result
-    if [ $? -eq 0 ]; then 
+    if [ $? -eq 0 ]; then
         _result='No Issues Found!'
-    else 
+    else
         _result=$(cat results.txt)
     fi
 
@@ -72,10 +72,34 @@ then
 
     _result="Typescript code scanning has not yet been implemented in ecoScan, please wait for it in future releases"
 
-elif [[ $INPUT_LANG =~ ^(py|python)$ ]]
+elif [[ $INPUT_LANG =~ ^(py|python|py2|python2)$ ]]
 then
 
-    _result="Python code scanning has not yet been implemented in ecoScan, please wait for it in future releases"
+    _result="Only Python 3 code scanning is available at this time, please use \"py3\" or \"python3\" as the language option if this is the langauge you intend to scan against"
+
+elif [[ $INPUT_LANG =~ ^(py3|python3)$ ]]
+then
+
+     # If no directory provided the entire project should be scanned recursively
+    if [[ $INPUT_DIR == "" ]]
+    then
+        INPUT_DIR="."
+    else
+        INPUT_DIR="${GITHUB_WORKSPACE}/${INPUT_DIR}"
+    fi
+
+    # Install bandit
+    pip install bandit
+
+    # Run bandit
+    bandit -r -f txt -o results.txt $INPUT_DIR
+
+    # If exit code success, no issues found, else store results of scan in variable _result
+    if [ $? -eq 0 ]; then
+        _result='No Issues Found!'
+    else
+        _result=$(cat results.txt)
+    fi
 
 elif [[ $INPUT_LANG =~ ^java$ ]]
 then
