@@ -26,7 +26,7 @@ jobs:
 
       - name: Ecoscan 
         id: ecoscan
-        uses: ecobee/security-actions/ecoscan@v0.2
+        uses: ecobee/security-actions/ecoscan@v0.3
         with:
           language: 'go'
           directory: "cmd/"
