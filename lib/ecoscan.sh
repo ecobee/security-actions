@@ -116,6 +116,32 @@ then
 
     _result="Swift code scanning has not yet been implemented in ecoScan, please wait for it in future releases"
 
+elif [[ $INPUT_LANG =~ ^(c|cpp|c\+\+)$ ]]
+then
+    _result="C and C++ code scanning has not yet been implemented in ecoScan, please wait for it in future releases"
+
+    # If no directory provided the entire project should be scanned recursively
+    if [[ $INPUT_DIR == "" ]]
+    then
+        INPUT_DIR="."
+    else
+        INPUT_DIR="${GITHUB_WORKSPACE}/${INPUT_DIR}"
+    fi
+
+    # Install flawfinder
+    pip install flawfinder
+
+    # Run flawfinder
+    flawfinder --falsepositive --quiet --minlevel=4 --savehitlist=results.txt $INPUT_DIR
+
+    # If exit code success, no issues found, else store results of scan in variable _result
+    #if [ $? -eq 0 ]; then
+    #    _result='No Issues Found!'
+    #else
+    #    _result=$(cat results.txt)
+    #fi
+
+
 else
     
     echo "$INPUT_LANG is not supported"
